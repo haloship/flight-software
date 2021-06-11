@@ -172,6 +172,7 @@ void loop()
   lps25_retrieve_data();
   myGNSS.checkUblox();
   myGNSS.checkCallbacks();
+  Serial.println("");
   // bmx055_retrieve_data();
   delay(1000);
 }
