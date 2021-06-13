@@ -88,7 +88,7 @@ void setup()
 
     // blinker = new Blink(pwm);
 
-    // // Run sensor check
+    // Run sensor check
     // check_sensors(pwm, barometer, transceiver, imu, flash)
     //     ? buzzer->signalSuccess()
     //     : buzzer->signalFail();
@@ -104,4 +104,5 @@ void setup()
 
 void loop()
 {
+    scheduler.execute();
 }

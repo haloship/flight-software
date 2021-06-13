@@ -55,6 +55,9 @@
 #define RFM69_CS PB9       //
 #define RFM69_RST PB8      // "A"
 #define LPS_CS PC7
+#define LPS_SCK PB13
+#define LPS_MISO PB14
+#define LPS_MOSI PB15
 #endif
 
 //   #define LED           PC1

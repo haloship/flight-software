@@ -2,6 +2,7 @@
 #define LPS25HB_H
 
 #include <scheduler.h>
+#include <SparkFun_u-blox_GNSS_Arduino_Library.h>
 #include <Adafruit_LPS2X.h>
 #include <Adafruit_Sensor.h>
 #include <Arduino.h>
