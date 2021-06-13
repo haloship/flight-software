@@ -1,6 +1,10 @@
 #ifndef BUZZER_H
 #define BUZZER_H
 
+#if defined(FEATHER_BOARD)
+#define BUZZER PC3
+#endif
+
 #include <scheduler.h>
 #include <Arduino.h>
 #include <mario.h>

@@ -26,6 +26,7 @@ float Barometer::getPressure()
 
 bool Barometer::measurementReady()
 {
+    Serial.println("Barometer measurement ready.");
     long current_time = millis();
     if (current_time - this->previous_time >= this->measurement_delay)
     {
@@ -37,6 +38,7 @@ bool Barometer::measurementReady()
 
 bool Barometer::Callback()
 {
+    Serial.println("inside barometer callback");
     if (measurementReady())
     {
         sensors_event_t pressure;
@@ -45,6 +47,7 @@ bool Barometer::Callback()
         this->pressure_driver->getEvent(&pressure);
         this->temperature = temp.temperature;
         this->pressure = pressure.pressure;
+        Serial.println(this->pressure);
         return true;
     }
     return false;
@@ -63,5 +66,6 @@ void Barometer::OnDisable()
 
 bool Barometer::checkStatus()
 {
+    Serial.println("Barometer Checking status");
     return this->lps_driver->begin_SPI(this->LPS_CS, &this->spi_dev);
 }

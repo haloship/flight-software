@@ -2,15 +2,18 @@
 #define CONFIG_H
 
 #include <Arduino.h>
-#include <Servo.h>
+#include <Wire.h>
+// #include <Servo.h>
 #include <buzzer.h>
-#include <pwm.h>
+// #include <pwm.h>
 #include <lps25hb.h>
 #include <rfm69.h>
-#include <blink.h>
-#include <imu.h>
-#include <flash.h>
+// #include <blink.h>
+// // #include <imu.h>
+// #include <flash.h>
 #include <TaskScheduler.h>
+
+// #define BUZZER PC3
 
 #if defined(HALOSHIP)
 
@@ -47,10 +50,13 @@
 #endif
 
 // // RFM69 pin definition for stm32F4
-// #if defined (FEATHER_BOARD)  // Defined in Arduino framework
-//   #define RFM69_INT     PC6  //
-//   #define RFM69_CS      PB9  //
-//   #define RFM69_RST     PB8  // "A"
+#if defined(FEATHER_BOARD) // Defined in Arduino framework
+#define RFM69_INT PC6      //
+#define RFM69_CS PB9       //
+#define RFM69_RST PB8      // "A"
+#define LPS_CS PC7
+#endif
+
 //   #define LED           PC1
 
 // // LPS25 pin definition
