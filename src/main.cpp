@@ -6,6 +6,7 @@ Buzzer *buzzer;
 // PWMControl *pwm;
 Barometer *barometer;
 // Blink *blinker;
+GPS *gps;
 Transceiver *transceiver;
 // IMU *imu;
 // Flash *flash;
@@ -31,6 +32,7 @@ enum state
 
 bool check_sensors_feather(
     Barometer *barometer,
+    GPS *gps,
     Transceiver *transceiver)
 {
     Serial.println("************************************");
@@ -47,6 +49,16 @@ bool check_sensors_feather(
     else
     {
         Serial.println("Barometer connection failed \xE2\x9C\x97");
+        error = false;
+    }
+
+    if (gps->checkStatus())
+    {
+        Serial.println("GPS connection success! \xE2\x9C\x93");
+    }
+    else
+    {
+        Serial.println("GPS connection failed \xE2\x9C\x97");
         error = false;
     }
 
@@ -82,7 +94,8 @@ void setup()
     buzzer = new Buzzer();
     // pwm = new PWMControl();
     barometer = new Barometer(LPS_CS, 500);
-    transceiver = new Transceiver(RFM69_CS, RFM69_INT);
+    gps = new GPS(500);
+    transceiver = new Transceiver(RFM69_CS, RFM69_INT, barometer, gps, 500);
     // imu = new IMU(500);
     // flash = new Flash(FLASH_CS);
 
@@ -92,14 +105,15 @@ void setup()
     // check_sensors(pwm, barometer, transceiver, imu, flash)
     //     ? buzzer->signalSuccess()
     //     : buzzer->signalFail();
-    check_sensors_feather(barometer, transceiver)
+    check_sensors_feather(barometer, gps, transceiver)
         ? Serial.println("sensors success")
         : Serial.println("sensors failed");
 
     // // Enable chips
     barometer->enable();
+    gps->enable();
     // imu->enable();
-    // transceiver->enable();
+    transceiver->enable();
 }
 
 void loop()

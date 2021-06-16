@@ -47,7 +47,6 @@ bool Barometer::Callback()
         this->pressure_driver->getEvent(&pressure);
         this->temperature = temp.temperature;
         this->pressure = pressure.pressure;
-        Serial.println(this->pressure);
         return true;
     }
     return false;

@@ -7,6 +7,7 @@
 #include <buzzer.h>
 // #include <pwm.h>
 #include <lps25hb.h>
+// #include <gps.h>
 #include <rfm69.h>
 // #include <blink.h>
 // // #include <imu.h>
