@@ -26,6 +26,7 @@ float Barometer::getPressure()
 
 bool Barometer::measurementReady()
 {
+
     long current_time = millis();
     if (current_time - this->previous_time >= this->measurement_delay)
     {

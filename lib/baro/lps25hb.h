@@ -8,9 +8,17 @@
 #include <SPI.h>
 #include "chip.h"
 
+#if defined(HALOSHIP)
 #define LPS_SCK PA5
 #define LPS_MISO PA6
 #define LPS_MOSI PA7
+#endif
+
+#if defined(FEATHER_BOARD)
+#define LPS_SCK PB13
+#define LPS_MISO PB14
+#define LPS_MOSI PB15
+#endif
 
 class Barometer : public Task, public Chip
 {

@@ -7,7 +7,8 @@ bool check_sensors(PWMControl *pwm,
                    Barometer *barometer,
                    Transceiver *transceiver,
                    IMU *imu,
-                   Flash *flash)
+                   Flash *flash,
+                   GPS *gps)
 {
     Serial.println("************************************");
     Serial.println("Conducting status check on all ICs...");
@@ -68,6 +69,16 @@ bool check_sensors(PWMControl *pwm,
     else
     {
         Serial.println("Flash connection failed \xE2\x9C\x97");
+        error = false;
+    }
+
+    if (gps->checkStatus())
+    {
+        Serial.println("GPS connection success! \xE2\x9C\x93");
+    }
+    else
+    {
+        Serial.println("GPS connection failed \xE2\x9C\x97");
         error = false;
     }
 
