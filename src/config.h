@@ -3,16 +3,17 @@
 
 #include <Arduino.h>
 #include <Wire.h>
-// #include <Servo.h>
 #include <buzzer.h>
-// #include <pwm.h>
 #include <lps25hb.h>
-// #include <gps.h>
 #include <rfm69.h>
-// #include <blink.h>
-// // #include <imu.h>
-// #include <flash.h>
 #include <TaskScheduler.h>
+#include <gps.h>
+
+#include <Servo.h>
+#include <pwm.h>
+#include <blink.h>
+#include <imu.h>
+#include <flash.h>
 
 // #define BUZZER PC3
 

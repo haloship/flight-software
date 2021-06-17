@@ -8,11 +8,11 @@
 #include <SPI.h>
 #include "chip.h"
 
-// #if defined(FEATHER_BOARD)
-// #define LPS_SCK PA5
-// #define LPS_MISO PA6
-// #define LPS_MOSI PA7
-// #endif
+#if defined(HALOSHIP)
+#define LPS_SCK PA5
+#define LPS_MISO PA6
+#define LPS_MOSI PA7
+#endif
 
 #if defined(FEATHER_BOARD)
 #define LPS_SCK PB13

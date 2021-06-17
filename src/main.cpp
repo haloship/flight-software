@@ -1,17 +1,18 @@
 #include "config.h"
-// #include "util.h"
+#include "util.h"
 
 // Instantiate objects
 Buzzer *buzzer;
-// PWMControl *pwm;
 Barometer *barometer;
-// Blink *blinker;
 GPS *gps;
 Transceiver *transceiver;
+
+PWMControl *pwm;
+Blink *blinker;
 // IMU *imu;
-// Flash *flash;
-// Servo main_chute_servo;
-// Servo drogue_chute_servo;
+Flash *flash;
+Servo main_chute_servo;
+Servo drogue_chute_servo;
 
 // SERVO USES STM32F4 TIMER 1 THAT OPERATES AT TWICE THE EXPECTED FREQUENCY
 // HENCE WRITE ALL MICROSECONDS IN DOUBLE
@@ -102,9 +103,10 @@ void setup()
     // blinker = new Blink(pwm);
 
     // Run sensor check
-    // check_sensors(pwm, barometer, transceiver, imu, flash)
+    // check_sensors(pwm, barometer, transceiver, imu, flash, gps)
     //     ? buzzer->signalSuccess()
     //     : buzzer->signalFail();
+
     check_sensors_feather(barometer, gps, transceiver)
         ? Serial.println("sensors success")
         : Serial.println("sensors failed");
@@ -112,8 +114,8 @@ void setup()
     // // Enable chips
     barometer->enable();
     gps->enable();
-    // imu->enable();
     transceiver->enable();
+    // imu->enable();
 }
 
 void loop()

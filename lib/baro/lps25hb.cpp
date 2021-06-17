@@ -38,7 +38,6 @@ bool Barometer::measurementReady()
 
 bool Barometer::Callback()
 {
-    // Serial.println("inside barometer callback");
     if (measurementReady())
     {
         sensors_event_t pressure;
@@ -65,6 +64,5 @@ void Barometer::OnDisable()
 
 bool Barometer::checkStatus()
 {
-    Serial.println("Barometer Checking status");
     return this->lps_driver->begin_SPI(this->LPS_CS, &this->spi_dev);
 }
